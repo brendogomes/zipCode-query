@@ -1,0 +1,32 @@
+<div id="container">
+  <form [formGroup]="zipCodeForm">
+    <div class="form-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Informe o CEP</mat-label>
+        <input
+          (focusout)="formZipCode()"
+          formControlName="zipcode"
+          mask="00000-000"
+          matInput
+          required 
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Rua</mat-label>
+        <input formControlName="street" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Bairro</mat-label>
+        <input formControlName="neighborhood" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Cidade</mat-label>
+        <input formControlName="city" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <input formControlName="state" matInput />
+      </mat-form-field>
+    </div>
+  </form>
+</div>

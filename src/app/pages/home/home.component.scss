@@ -1,0 +1,29 @@
+#container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #191f37,
+    #252636,
+    #2e2e36,
+    #363636
+  );
+
+  .form-container {
+    display: grid;
+    width: 330px;
+  }
+
+  mat-label {
+    color: white;
+  }
+
+  input {
+    color: white;
+  }
+}
