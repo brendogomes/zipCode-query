@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ZipCodeService } from 'src/app/services/zipCode.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.createFormZipCode();
   }
 
-  // Método que irá criar o fomulário.
+  // Método que irá criar o fomulário de local e armazenar as informações nele inseridas
   createFormZipCode(): void {
     this.zipCodeForm = this.formBuilder.group({
       zipcode: [null],
@@ -38,13 +39,17 @@ export class HomeComponent implements OnInit {
         .toPromise()
         .then(
           (data) => {
-            this.zipCodeForm.patchValue({
-              zipcode: data.zipcode,
-              street: data.street,
-              neighborhood: data.neighborhood,
-              city: data.city,
-              state: data.state,
-            });
+            if (data.zipcode === undefined) {
+              this.zipCodeService.showMessage('CEP inválido');
+            } else {
+              this.zipCodeForm.patchValue({
+                zipcode: data.zipcode,
+                street: data.street,
+                neighborhood: data.neighborhood,
+                city: data.city,
+                state: data.state,
+              });
+            }
           },
           (error) => {
             this.zipCodeService.showMessage('CEP inválido');
